@@ -56,54 +56,6 @@ def get_individual_residues(residues):
             list_residues.extend(list(range(int(start), int(end)+1)))
     return sorted(list_residues)
 
-"""
-def get_interface_sequence(model, iface, chain):
-    # get residues in list 
-    iface_residues = get_individual_residues(iface)
-    residue_ranges = group_residues(model, chain)
-    print(residue_ranges)
-    sequence = []
-    
-    range_idx = 0
-    if range_idx >= len(residue_ranges):
-        return ""
-    
-    start, end = residue_ranges[range_idx]
-    
-    for residue in model[chain].get_residues():
-        residue_id = residue.get_id()[1]
-        
-        # move to the next range if we passed the current one
-        while residue_id > end: 
-            range_idx += 1
-            if range_idx >= len(residue_ranges):
-                return "".join(sequence)
-            
-            # separate ranges
-            sequence.append(":")
-
-            # set new range 
-            start, end = residue_ranges[range_idx]
-        
-        # If residue is before current range, skip
-        if residue_id < start:
-            continue
-        
-        # get residue 1-letter code if residue_id is in iface_residues list 
-        # upper case if interacting, lower case if not interacting?
-        try:
-            aa = three_to_one(residue.get_resname())
-        except Exception as e:
-            aa = "-"
-
-        if residue_id in iface_residues:
-            sequence.append(aa)
-        else:
-            sequence.append(aa.lower())
-
-    return "".join(sequence)
-"""
-
 def get_interface_sequence(model, iface, chain):
     iface_residues = set(get_individual_residues(iface))
     sequence = []
