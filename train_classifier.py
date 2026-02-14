@@ -116,7 +116,7 @@ def filter_dataset(df, criteria_name, threshold):
     elif "% interacting residues" in criteria_name:
         col = 'perc_interacting_residues'
     elif "% overlap interface" in criteria_name:
-        col = 'perc_overlap_interface'
+        col = 'perc_overlap_iface'
     elif "% overlap fragment" in criteria_name:
         col = 'perc_overlap_fragment'
     else:
@@ -265,7 +265,7 @@ def train_single_model(name, base_model, X_train, y_train, X_test, y_test,
 
 # Load dataset once
 print("Loading dataset...")
-df = pd.read_csv("uniprot_receptor_domain_idp_full_dataset.tsv", sep='\t')
+df = pd.read_csv("uniprot_idp_domain_receptor_full_dataset.tsv", sep='\t')
 print(f"Dataset loaded: {df.shape[0]} rows, {df.shape[1]} columns\n")
 
 # Define sections and criteria
